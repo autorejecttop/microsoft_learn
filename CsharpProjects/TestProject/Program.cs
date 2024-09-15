@@ -1,58 +1,38 @@
-﻿// // // // // // // Console.WriteLine("a" == "a");
-// // // // // // // Console.WriteLine("a" == "A");
-// // // // // // // Console.WriteLine(1 == 2);
+﻿// // // bool flag = true;
+// // // int value;
 
-// // // // // // // string myValue = "a";
-// // // // // // // Console.WriteLine(myValue == "a");
+// // // if (true)
+// // // {
+// // //     value = 10;
+// // //     Console.WriteLine($"Inside the code block: {value}");
+// // // }
 
-// // // // // // // string value1 = " a";
-// // // // // // // string value2 = "A ";
-// // // // // // // Console.WriteLine(value1.Trim().ToLower() == value2.Trim().ToLower());
+// // // Console.WriteLine($"Outside the code block: {value}");
 
-// // // // // // Console.WriteLine("a" != "a");
-// // // // // // Console.WriteLine("a" != "A");
-// // // // // // Console.WriteLine(1 != 2);
+// // bool flag = true;
+// // if (flag)
+// //     Console.WriteLine(flag);
 
-// // // // // // string myValue = "a";
-// // // // // // Console.WriteLine(myValue != "a");
+// string name = "steve";
+// if (name == "bob")
+//     Console.WriteLine("Found Bob");
+// else if (name == "steve")
+//     Console.WriteLine("Found Steve");
+// else
+//     Console.WriteLine("Found Chuck");
 
-// // // // // Console.WriteLine(1 > 2);
-// // // // // Console.WriteLine(1 < 2);
-// // // // // Console.WriteLine(1 >= 1);
-// // // // // Console.WriteLine(1 <= 1);
+int[] numbers = [4, 8, 15, 16, 23, 42];
+int total = 0;
+bool found = false;
 
-// // // // string pangram = "The quick brown fox jumps over the lazy dog.";
-// // // // Console.WriteLine(pangram.Contains("fox"));
-// // // // Console.WriteLine(pangram.Contains("cow"));
-
-// // // string pangram = "The quick brown fox jumps over the lazy dog.";
-// // // Console.WriteLine(!pangram.Contains("fox"));
-// // // Console.WriteLine(!pangram.Contains("cow"));
-
-// // int saleAmount = 1001;
-// // // int discount = saleAmount > 1000 ? 100 : 50;
-
-// // Console.WriteLine($"Discount: {(saleAmount > 1000 ? 100 : 50)}");
-
-// Random coin = new();
-// int flip = coin.Next(0, 2);
-// Console.WriteLine(flip == 0 ? "heads" : "tails");
-
-string permission = "Admin|Manager";
-int level = 55;
-string message = "";
-
-if (permission.Contains("Admin"))
+foreach (int number in numbers)
 {
-    message = level > 55 ? "Welcome, Super Admin user." : "Welcome, Admin user.";
-}
-else if (permission.Contains("Manager"))
-{
-    message = level >= 20 ? "Contact an Admin for access." : "You do not have sufficient privileges.";
-}
-else
-{
-    message = "You do not have sufficient privileges.";
+    total += number;
+    if (number == 42)
+        found = true;
 }
 
-Console.WriteLine(message);
+if (found)
+    Console.WriteLine("Set contains 42");
+
+Console.WriteLine($"Total: {total}");
