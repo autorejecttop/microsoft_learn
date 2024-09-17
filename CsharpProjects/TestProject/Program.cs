@@ -1,85 +1,121 @@
-﻿// // // // // // // // string first = "Hello";
-// // // // // // // // string second = "World";
-// // // // // // // // Console.WriteLine($"{first} {second}!");
-// // // // // // // // Console.WriteLine($"{second} {first}!");
-// // // // // // // // Console.WriteLine($"{first} {first} {first}!");
+﻿// // // // // // // // string message = "What is the value <span>between the tags</span>";
 
-// // // // // // // decimal price = 123.45m;
-// // // // // // // int discount = 50;
-// // // // // // // Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+// // // // // // // // const string openSpan = "<span>";
+// // // // // // // // const string closeSpan = "</span>";
 
-// // // // // // decimal measurement = 123456.78912m;
-// // // // // // Console.WriteLine($"Measurement: {measurement:N} units");
+// // // // // // // // int openingPosition = message.IndexOf(openSpan);
+// // // // // // // // int closingPosition = message.IndexOf(closeSpan);
 
-// // // // // decimal tax = .36785m;
-// // // // // Console.WriteLine($"Tax rate: {tax:P2}");
+// // // // // // // // openingPosition += openSpan.Length;
+// // // // // // // // int length = closingPosition - openingPosition;
+// // // // // // // // Console.WriteLine(message.Substring(openingPosition, length));
 
-// // // // decimal price = 67.55m;
-// // // // decimal salePrice = 59.99m;
+// // // // // // // string message = "hello there!";
 
-// // // // string yourDiscount = string.Format("You saved {0:C2} off the regular {1:C2} price. ", price - salePrice, price);
+// // // // // // // int first_h = message.IndexOf('h');
+// // // // // // // int last_h = message.LastIndexOf('h');
 
-// // // // yourDiscount += $"A discount of {(price - salePrice) / price:P2}!";
-// // // // Console.WriteLine(yourDiscount);
+// // // // // // // System.Console.WriteLine($"For the message: '{message}', the first 'h' is at position {first_h} and the last 'h' is at position {last_h}");
 
-// // // int invoiceNumber = 1201;
-// // // decimal productShares = 25.4568m;
-// // // decimal subtotal = 2750m;
-// // // decimal taxPercentage = 0.15825m;
-// // // decimal total = 3185.19m;
+// // // // // // string message = "(What if) I am (only interested) in the last (set of parentheses)?";
+// // // // // // int openingPosition = message.LastIndexOf('(');
 
-// // // Console.WriteLine($"Invoice Number: {invoiceNumber}");
-// // // Console.WriteLine($"   Shares: {productShares:N3} Product");
-// // // Console.WriteLine($"     Sub Total: {subtotal:C}");
-// // // Console.WriteLine($"           Tax: {taxPercentage:P2}");
-// // // Console.WriteLine($"     Total Billed: {total:C}");
+// // // // // // openingPosition += 1;
+// // // // // // int closingPosition = message.LastIndexOf(')');
+// // // // // // int length = closingPosition - openingPosition;
+// // // // // // Console.WriteLine(message.Substring(openingPosition, length));
 
+// // // // // string message = "(What if) I am (only interested) in the last (set of parentheses)?";
+// // // // // while (true)
+// // // // // {
+// // // // //     int openingPosition = message.IndexOf('(');
+// // // // //     if (openingPosition == -1) break;
 
-// // string input = "Pad this";
-// // Console.WriteLine(input.PadLeft(12, '-'));
-// // Console.WriteLine(input.PadRight(12, '-'));
+// // // // //     openingPosition += 1;
+// // // // //     int closingPosition = message.IndexOf(')');
+// // // // //     int length = closingPosition - openingPosition;
+// // // // //     Console.WriteLine(message.Substring(openingPosition, length));
 
-// string paymentId = "769C";
-// string payeeName = "Mr. Stephen Ortega";
-// string paymentAmount = "$5,000.00";
+// // // // //     message = message.Substring(closingPosition + 1);
+// // // // // }
 
-// string formattedLine = paymentId.PadRight(6);
-// formattedLine += payeeName.PadRight(24);
-// formattedLine += paymentAmount.PadLeft(10);
+// // // // string message = "Help (find) the {opening symbols}";
+// // // // Console.WriteLine($"Searching THIS message: {message}");
+// // // // char[] openSymbols = ['[', '{', '('];
+// // // // int startPosition = 5;
+// // // // int openingPosition = message.IndexOfAny(openSymbols);
+// // // // Console.WriteLine($"Found WITHOUT using startPosition: {message.Substring(openingPosition)}");
 
-// Console.WriteLine("1234567890123456789012345678901234567890");
-// Console.WriteLine(formattedLine);
+// // // // openingPosition = message.IndexOfAny(openSymbols, startPosition);
+// // // // Console.WriteLine($"Found WITH using startPosition {startPosition}: {message.Substring(openingPosition)}");
 
-string customerName = "Ms. Barros";
+// // // string message = "(What if) I have [different symbols] but every {open symbol} needs a [matching closing symbol]?";
 
-string currentProduct = "Magic Yield";
-int currentShares = 2975000;
-decimal currentReturn = 0.1275m;
-decimal currentProfit = 55000000.0m;
+// // // char[] openSymbols = ['[', '{', '('];
 
-string newProduct = "Glorious Future";
-decimal newReturn = 0.13125m;
-decimal newProfit = 63000000.0m;
+// // // int closingPosition = 0;
 
-// Your logic here
-Console.WriteLine($"Dear {customerName}");
-Console.WriteLine($"As a customer of our {currentProduct} offering we are excited to tell you about a new financial product that would dramatically increase your return.");
-Console.WriteLine();
-Console.WriteLine($"Currently, you own ${currentShares:N} shares at a return of {currentReturn:P2}");
-Console.WriteLine();
-Console.WriteLine($"Our new product, {newProduct} offers a return of {newReturn:P2}. Given your current volume, your potential profit would be {newProfit:C2}");
-Console.WriteLine();
+// // // while (true)
+// // // {
+// // //     int openingPosition = message.IndexOfAny(openSymbols, closingPosition);
+// // //     if (openingPosition == -1)
+// // //         break;
 
-Console.WriteLine("Here's a quick comparison:\n");
+// // //     string currentSymbol = message.Substring(openingPosition, 1);
 
-string comparisonMessage = "";
+// // //     char matchingSymbol = ' ';
 
-// Your logic here
-string formattedCurrentReturn = string.Format("{0:P2}", currentReturn);
-string formattedCurrentProfit = string.Format("{0:C2}", currentProfit);
-string formattedNewReturn = string.Format("{0:P2}", newReturn);
-string formattedNewProfit = string.Format("{0:C2}", newProfit);
-comparisonMessage += $"{currentProduct.PadRight(17)}{formattedCurrentReturn.PadLeft(10)}{formattedCurrentProfit.PadLeft(17)}\n";
-comparisonMessage += $"{newProduct.PadRight(17)}{formattedNewReturn.PadLeft(10)}{formattedNewProfit.PadLeft(17)}";
+// // //     switch (currentSymbol)
+// // //     {
+// // //         case "[":
+// // //             matchingSymbol = ']';
+// // //             break;
+// // //         case "{":
+// // //             matchingSymbol = '}';
+// // //             break;
+// // //         case "(":
+// // //             matchingSymbol = ')';
+// // //             break;
+// // //     }
 
-Console.WriteLine(comparisonMessage);
+// // //     openingPosition += 1;
+// // //     closingPosition = message.IndexOf(matchingSymbol, openingPosition);
+
+// // //     int length = closingPosition - openingPosition;
+// // //     Console.WriteLine(message.Substring(openingPosition, length));
+// // // }
+
+// // string data = "12345John Smith          5000  3  ";
+// // string updatedData = data.Remove(5, 20);
+// // Console.WriteLine(updatedData);
+
+// string message = "This--is--ex-amp-le--da-ta";
+// message = message.Replace("--", " ");
+// message = message.Replace("-", "");
+// Console.WriteLine(message);
+
+const string input = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
+
+string quantity = "";
+string output = "";
+
+// Your work here
+int quantityOpeningPosition = input.IndexOf("<span>");
+int quantityClosingPosition = input.IndexOf("</span>");
+
+quantityOpeningPosition += "<span>".Length;
+
+int quantityLength = quantityClosingPosition - quantityOpeningPosition;
+quantity = input.Substring(quantityOpeningPosition, quantityLength);
+
+int outputOpeningPosition = input.IndexOf("<div>");
+int outputClosingPosition = input.IndexOf("</div>");
+
+outputOpeningPosition += "<div>".Length;
+
+int outputLength = outputClosingPosition - outputOpeningPosition;
+
+output = input.Substring(outputOpeningPosition, outputLength).Replace("&trade;", "&reg;");
+
+Console.WriteLine($"Quantity: {quantity}");
+Console.WriteLine($"Output: {output}");
