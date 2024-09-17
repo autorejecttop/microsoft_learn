@@ -1,90 +1,73 @@
-﻿// // // // // // // // // // // int first = 2;
-// // // // // // // // // // // string second = "4";
-// // // // // // // // // // // string result = first + second;
-// // // // // // // // // // // Console.WriteLine(result);
+﻿// // // // string[] pallets = ["B14", "A11", "B12", "A13"];
 
-// // // // // // // // // // int myInt = 3;
-// // // // // // // // // // Console.WriteLine($"int: {myInt}");
+// // // // Console.WriteLine("Sorted...");
+// // // // Array.Sort(pallets);
+// // // // foreach (string pallet in pallets)
+// // // //     Console.WriteLine($"-- {pallet}");
 
-// // // // // // // // // // decimal myDecimal = myInt;
-// // // // // // // // // // Console.WriteLine($"decimal: {myDecimal}");
+// // // // Console.WriteLine();
+// // // // Console.WriteLine("Reversed...");
+// // // // Array.Reverse(pallets);
+// // // // foreach (string pallet in pallets)
+// // // //     Console.WriteLine($"-- {pallet}");
 
-// // // // // // // // // decimal myDecimal = 3.14m;
-// // // // // // // // // Console.WriteLine($"decimal: {myDecimal}");
+// // // string[] pallets = ["B14", "A11", "B12", "A13"];
+// // // Console.WriteLine();
 
-// // // // // // // // // int myInt = (int)myDecimal;
-// // // // // // // // // Console.WriteLine($"int: {myInt}");
+// // // Array.Clear(pallets, 0, 2);
+// // // Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
+// // // foreach (string pallet in pallets)
+// // //     Console.WriteLine($"-- {pallet}"); ;
 
-// // // // // // // // decimal myDecimal = 1.23456789m;
-// // // // // // // // float myFloat = (float)myDecimal;
+// // // Console.WriteLine();
+// // // Array.Resize(ref pallets, 6);
+// // // Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
 
-// // // // // // // // Console.WriteLine($"Decimal: {myDecimal}");
-// // // // // // // // Console.WriteLine($"Float: {myFloat}");
+// // // pallets[4] = "C01";
+// // // pallets[5] = "C02";
 
-// // // // // // // int first = 5;
-// // // // // // // int second = 7;
-// // // // // // // string message = first.ToString() + second.ToString();
-// // // // // // // Console.WriteLine(message);
+// // // foreach (string pallet in pallets)
+// // //     Console.WriteLine($"-- {pallet}");
 
-// // // // // // string first = "5";
-// // // // // // string second = "7";
-// // // // // // int sum = int.Parse(first) + int.Parse(second);
-// // // // // // Console.WriteLine(sum);
+// // // Console.WriteLine();
+// // // Array.Resize(ref pallets, 3);
+// // // Console.WriteLine($"Resizing 3 ... count: {pallets.Length}");
 
-// // // // // string value1 = "5";
-// // // // // string value2 = "7";
-// // // // // int result = Convert.ToInt32(value1) * Convert.ToInt32(value2);
-// // // // // Console.WriteLine(result);
+// // // foreach (string pallet in pallets)
+// // //     Console.WriteLine($"-- {pallet}");
 
-// // // // int value = (int)1.5m;
-// // // // Console.WriteLine(value);
+// // string value = "abc123";
+// // char[] valueArray = value.ToCharArray();
+// // Array.Reverse(valueArray);
+// // // string result = new string(valueArray);
+// // string result = string.Join(",", valueArray);
+// // Console.WriteLine(result);
 
-// // // // int value2 = Convert.ToInt32(1.5m);
-// // // // Console.WriteLine(value2);
+// // string[] items = result.Split(",");
+// // foreach (string item in items)
+// //     Console.WriteLine(item);
 
-// // // string name = "Bob";
-// // // Console.WriteLine(int.Parse(name));
+// string pangram = "The quick brown fox jumps over the lazy dog";
+// string[] pangramArray = pangram.Split(" ");
 
-// // string value = "bad";
-// // int result = 0;
-
-// // if (int.TryParse(value, out result))
-// //     Console.WriteLine($"Measurement: {result}");
-// // else
-// //     Console.WriteLine("Unable to report the measurement.");
-
-// // if (result > 0)
-// //     Console.WriteLine($"Measurement (w/ offset): {50 + result}");
-
-// string[] values = ["12.3", "45", "ABC", "11", "DEF"];
-// string message = "";
-// float total = 0;
-
-// foreach (string value in values)
+// for (int i = 0; i < pangramArray.Length; i++)
 // {
-//     if (float.TryParse(value, out float parsedValue))
-//         total += parsedValue;
-//     else
-//         message += value;
+//     char[] wordArray = pangramArray[i].ToCharArray();
+//     Array.Reverse(wordArray);
+//     pangramArray[i] = new string(wordArray);
 // }
 
-// Console.WriteLine($"Message: {message}");
-// Console.WriteLine($"Total: {total}");
+// Console.WriteLine(string.Join(" ", pangramArray));
 
-int value1 = 11;
-decimal value2 = 6.2m;
-float value3 = 4.3f;
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
 
-// Your code here to set result1
-int result1 = Convert.ToInt32(value1 / value2);
+string[] orderIds = orderStream.Split(",");
+Array.Sort(orderIds);
 
-// Hint: You need to round the result to nearest integer (don't just truncate)
-Console.WriteLine($"Divide value1 by value2, display the result as an int: {result1}");
-
-// Your code here to set result2
-decimal result2 = value2 / (decimal)value3;
-Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
-
-// Your code here to set result3
-float result3 = value3 / value1;
-Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
+foreach (string orderId in orderIds)
+{
+    Console.Write(orderId);
+    if (orderId.Length != 4)
+        Console.Write("\t - Error");
+    Console.WriteLine();
+}
