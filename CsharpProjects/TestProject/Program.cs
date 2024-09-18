@@ -1,196 +1,188 @@
-﻿// // // // // // // // CountTo(5);
+﻿// // // // // double total = 0;
+// // // // // double minimumSpend = 30.00;
 
-// // // // // // // // void CountTo(int max)
-// // // // // // // // {
-// // // // // // // //     for (int i = 0; i < max; i++)
-// // // // // // // //     {
-// // // // // // // //         Console.Write($"{i}, ");
-// // // // // // // //     }
-// // // // // // // // }
+// // // // // double[] items = { 15.97, 3.50, 12.25, 22.99, 10.98 };
+// // // // // double[] discounts = { 0.30, 0.00, 0.10, 0.20, 0.50 };
 
-// // // // // // // void DisplayAdjustedTimes(int[] times, int currentGmt, int newGmt)
-// // // // // // // {
-// // // // // // //     int diff = 0;
+// // // // // for (int i = 0; i < items.Length; i++)
+// // // // //     total += GetDiscountedPrice(i);
 
-// // // // // // //     if (Math.Abs(newGmt) > 12 || Math.Abs(currentGmt) > 12)
-// // // // // // //         Console.WriteLine("Invalid GMT");
-// // // // // // //     else if ((newGmt <= 0 && currentGmt <= 0) || (newGmt >= 0 && currentGmt >= 0))
-// // // // // // //         diff = 100 * (Math.Abs(newGmt) - Math.Abs(currentGmt));
-// // // // // // //     else
-// // // // // // //         diff = 100 * (Math.Abs(newGmt) + Math.Abs(currentGmt));
+// // // // // total -= TotalMeetsMinimum() ? 5.00 : 0.00;
 
-// // // // // // //     for (int i = 0; i < times.Length; i++)
-// // // // // // //     {
-// // // // // // //         int newTime = (times[i] + diff) % 2400;
-// // // // // // //         Console.WriteLine($"{times[i]} -> {newTime}");
-// // // // // // //     }
-// // // // // // // }
+// // // // // Console.WriteLine($"Total: ${FormatDecimal(total)}");
 
-// // // // // // // int[] schedule = [800, 1200, 1600, 2000];
-
-// // // // // // // DisplayAdjustedTimes(schedule, 6, -6);
-
-// // // // // // string[] students = ["Jenna", "Ayesha", "Carlos", "Viktor"];
-
-// // // // // // DisplayStudents(students);
-// // // // // // DisplayStudents(["Robert", "Vanya"]);
-
-// // // // // // void DisplayStudents(string[] students)
-// // // // // // {
-// // // // // //     foreach (string student in students)
-// // // // // //     {
-// // // // // //         Console.Write($"{student}, ");
-// // // // // //     }
-// // // // // //     Console.WriteLine();
-// // // // // // }
-
-// // // // // double pi = 3.14159;
-// // // // // PrintCircleInfo(12);
-// // // // // PrintCircleInfo(24);
-
-// // // // // void PrintCircleInfo(int radius)
+// // // // // double GetDiscountedPrice(int itemIndex)
 // // // // // {
-// // // // //     Console.WriteLine($"Circle with radius {radius}");
-// // // // //     PrintCircleArea(radius);
-// // // // //     PrintCircleCircumference(radius);
+// // // // //     // Calculate the discounted price of the item
+// // // // //     return items[itemIndex] * (1 - discounts[itemIndex]);
 // // // // // }
 
-// // // // // void PrintCircleArea(int radius)
+// // // // // bool TotalMeetsMinimum()
 // // // // // {
-// // // // //     double area = pi * (radius * radius);
-// // // // //     Console.WriteLine($"Area = {area}");
+// // // // //     // Check if the total meets the minimum
+// // // // //     return total >= minimumSpend;
 // // // // // }
 
-// // // // // void PrintCircleCircumference(int radius)
+// // // // // string FormatDecimal(double input)
 // // // // // {
-// // // // //     double circumference = 2 * pi * radius;
-// // // // //     Console.WriteLine($"Circumference = {circumference}");
+// // // // //     // Format the double so only 2 decimal places are displayed
+// // // // //     return input.ToString()[..5];
 // // // // // }
 
-// // // // int a = 3;
-// // // // int b = 4;
-// // // // int c = 0;
+// // // // double usd = 23.73;
+// // // // int vnd = UsdToVnd(usd);
 
-// // // // Multiply(a, b, c);
-// // // // Console.WriteLine($"global statement: {a} x {b} = {c}");
+// // // // Console.WriteLine($"${usd} USD = ${vnd} VND");
+// // // // Console.WriteLine($"${vnd} VND = ${VndToUsd(vnd)} USD");
 
-// // // // void Multiply(int a, int b, int c)
+// // // // int UsdToVnd(double usd)
 // // // // {
-// // // //     c = a * b;
-// // // //     Console.WriteLine($"inside Multiply method: {a} x {b} = {c}");
+// // // //     int rate = 23500;
+// // // //     return (int)(rate * usd);
 // // // // }
 
-// // // int[] array = [1, 2, 3, 4, 5];
+// // // // double VndToUsd(int vnd)
+// // // // {
+// // // //     double rate = 23500;
+// // // //     return vnd / rate;
+// // // // }
 
-// // // PrintArray(array);
-// // // Clear(array);
-// // // PrintArray(array);
+// // // string input = "snake";
 
-// // // void PrintArray(int[] array)
+// // // Console.WriteLine(input);
+// // // Console.WriteLine(ReverseWord(input));
+
+// // // string inputSentence = "there are snakes at the zoo";
+
+// // // Console.WriteLine(inputSentence);
+// // // Console.WriteLine(ReverseSentence(inputSentence));
+
+// // // string ReverseSentence(string input)
 // // // {
-// // //     foreach (int a in array)
+// // //     string result = "";
+// // //     string[] words = input.Split(" ");
+
+// // //     foreach (string word in words)
 // // //     {
-// // //         Console.Write($"{a} ");
+// // //         result += ReverseWord(word) + " ";
 // // //     }
-// // //     Console.WriteLine();
+
+// // //     return result.Trim();
 // // // }
 
-// // // void Clear(int[] array)
+// // // string ReverseWord(string word)
 // // // {
-// // //     for (int i = 0; i < array.Length; i++)
-// // //     {
-// // //         array[i] = 0;
-// // //     }
+// // //     string result = "";
+
+// // //     for (int i = word.Length - 1; i >= 0; i--)
+// // //         result += word[i];
+
+// // //     return result;
 // // // }
 
-// // string status = "Healthy";
+// // string[] words = ["racecar", "talented", "deified", "tent", "tenet"];
 
-// // Console.WriteLine($"Start: {status}");
-// // SetHealth(false);
-// // Console.WriteLine($"End: {status}");
+// // Console.WriteLine("Is it a palindrome?");
+// // foreach (string word in words)
+// //     Console.WriteLine($"{word}: {IsPalindrome(word)}");
 
-// // void SetHealth(bool isHealthy)
+// // bool IsPalindrome(string word)
 // // {
-// //     status = isHealthy ? "Healthy" : "Unhealthy";
-// //     Console.WriteLine($"Middle: {status}");
+// //     int start = 0;
+// //     int end = word.Length - 1;
+
+// //     while (start < end)
+// //     {
+// //         if (word[start] != word[end])
+// //             return false;
+
+// //         start++;
+// //         end--;
+// //     }
+
+// //     return true;
 // // }
 
-// string[] guestList = { "Rebecca", "Nadia", "Noor", "Jonte" };
-// string[] rsvps = new string[10];
-// int count = 0;
+// int target = 80;
+// int[] coins = [5, 5, 50, 25, 25, 10, 5];
+// int[,] result = TwoCoins(coins, target);
 
-// RSVP("Rebecca");
-// RSVP("Nadia", 2, "Nuts");
-// RSVP(name: "Linh", partySize: 2, inviteOnly: false);
-// RSVP("Tony", allergies: "Jackfruit", inviteOnly: true);
-// RSVP("Noor", 4, inviteOnly: false);
-// RSVP("Jonte", 2, "Stone fruit", false);
-// ShowRSVPs();
-
-// void RSVP(string name, int partySize = 1, string allergies = "none", bool inviteOnly = true)
+// if (result.Length == 0)
 // {
-//     if (inviteOnly)
+//     Console.WriteLine("No two coins make change");
+// }
+// else
+// {
+//     Console.WriteLine($"Change found at positions:");
+//     for (int i = 0; i < result.GetLength(0); i++)
 //     {
-//         // search guestList before adding rsvp
-//         bool found = false;
+//         if (result[i, 0] == -1)
+//             break;
 
-//         foreach (string guest in guestList)
+//         Console.WriteLine($"{result[i, 0]},{result[i, 1]}");
+//     }
+// }
+
+
+// static int[,] TwoCoins(int[] coins, int target)
+// {
+//     int[,] result = { { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 } };
+//     int count = 0;
+
+//     for (int curr = 0; curr < coins.Length; curr++)
+//     {
+//         for (int next = curr + 1; next < coins.Length; next++)
 //         {
-//             if (guest.Equals(name))
+//             if (coins[curr] + coins[next] == target)
 //             {
-//                 found = true;
-//                 break;
+//                 result[count, 0] = curr;
+//                 result[count, 1] = next;
+//                 count++;
+//             }
+
+//             if (count == result.GetLength(0))
+//             {
+//                 return result;
 //             }
 //         }
-
-//         if (!found)
-//         {
-//             Console.WriteLine($"Sorry, {name} is not on the guest list");
-//             return;
-//         }
 //     }
 
-//     rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
-//     count++;
+//     return count == 0 ? new int[0, 0] : result;
 // }
 
-// void ShowRSVPs()
-// {
-//     Console.WriteLine("\nTotal RSVPs:");
-//     for (int i = 0; i < count; i++)
-//     {
-//         Console.WriteLine(rsvps[i]);
-//     }
-// }
+Random random = new Random();
 
-string[,] corporate =
+Console.WriteLine("Would you like to play? (Y/N)");
+if (ShouldPlay())
 {
-    {"Robert", "Bavin"}, {"Simon", "Bright"},
-    {"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
-    {"Sarah", "Delucchi"}, {"Sinan", "Ali"}
-};
-
-string[,] external =
-{
-    {"Vinnie", "Ashton"}, {"Cody", "Dysart"},
-    {"Shay", "Lawrence"}, {"Daren", "Valdes"}
-};
-
-string externalDomain = "hayworth.com";
-
-for (int i = 0; i < corporate.GetLength(0); i++)
-{
-    // display internal email addresses
-    DisplayEmailAddress(firstName: corporate[i, 0], lastName: corporate[i, 1]);
+    PlayGame();
 }
 
-for (int i = 0; i < external.GetLength(0); i++)
+void PlayGame()
 {
-    // display external email addresses
-    DisplayEmailAddress(firstName: external[i, 0], lastName: external[i, 1], domain: externalDomain);
+    var play = true;
+
+    while (play)
+    {
+        int target = random.Next(1, 6);
+        int roll = random.Next(1, 7);
+
+        Console.WriteLine($"Roll a number greater than {target} to win!");
+        Console.WriteLine($"You rolled a {roll}");
+        Console.WriteLine(WinOrLose(roll, target));
+        Console.WriteLine("\nPlay again? (Y/N)");
+
+        play = ShouldPlay();
+    }
 }
 
-void DisplayEmailAddress(string firstName, string lastName, string domain = "contoso.com")
+string WinOrLose(int roll, int target)
 {
-    Console.WriteLine($"{firstName[..2]}{lastName}@{domain}".ToLower());
+    return roll > target ? "You win!" : "You lose!";
+}
+
+bool ShouldPlay()
+{
+    string? readResult = Console.ReadLine();
+    return readResult != null && readResult.Trim().ToLower() == "y";
 }
